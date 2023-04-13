@@ -33,13 +33,13 @@ function preload(){
 }
 
 function setup() {
-  createCanvas(800, 400);
+  createCanvas(1200, 800);
   
   trex = createSprite(50,350,20,50);
   
   trex.addAnimation("running", trex_running);
   trex.addAnimation("collided", trex_collided);
-  trex.scale = 0.5;
+  trex.scale = 0.1;
   
   ground = createSprite(200,350,400,20);
   ground.addImage("ground",groundImage);
@@ -52,11 +52,12 @@ function setup() {
   restart = createSprite(300,140);
   restart.addImage(restartImg);
   
-  gameOver.scale = 0.5;
-  restart.scale = 0.5;
+  gameOver.scale = 10;
+  restart.scale = 0.3;
 
   gameOver.visible = false;
   restart.visible = false;
+  
   
   invisibleGround = createSprite(200,350,400,10);
   invisibleGround.visible = false;
@@ -106,7 +107,10 @@ function draw() {
   else if (gameState === END) {
     gameOver.visible = true;
     restart.visible = true;
+    cloudsGroup.visible = false;
+    obstaclesGroup.visible = false;
     
+
     //definir a velocidade de cada objeto do jogo para 0
     ground.velocityX = 0;
     trex.velocityY = 0;
